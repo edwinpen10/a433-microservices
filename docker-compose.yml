@@ -1,0 +1,50 @@
+version: "3.7"
+
+services:
+ # inisialisasi nama service
+ item-app:
+    # service akan di eksekusi ketika item-db sudah berjalan
+    depends_on:
+      -  item-db
+    # inisialisasi image service
+    image: node-app:v1
+    # inisialisasi name cotainer ketika service berjalan
+    container_name: item-app
+    # expose port public ke 80 
+    ports:
+      - 80:8080
+    # inisialisasi direktori
+    working_dir: /app
+    # inisialisasi environment
+    environment:
+      DB_HOST: item-db
+    # selalu restart ketika service down
+    restart: on-failure
+    # nisialisasi jaringan container service
+    networks:
+      - web-app
+      
+ # inisialisasi nama service  
+ item-db:
+    # inisialisasi image service
+    image: mongo:3
+    # inisialisasi name cotainer ketika service berjalan
+    container_name: item-db
+    # expose port public ke 27017 
+    ports:
+      - 27017:27017
+    # inisialisasi penyimpanan data atau volumes cotainer ketika service berjalan
+    volumes:
+      - app-db:/data/db
+    # selalu restart ketika service down
+    restart: on-failure
+    # inisialisasi jaringan container service
+    networks:
+      - web-app
+
+# inisialisasi volumes
+volumes:
+  app-db:
+# inisialisasi jaringan
+networks:
+  web-app:
