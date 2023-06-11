@@ -7,7 +7,7 @@ services:
     depends_on:
       -  item-db
     # inisialisasi image service
-    image: node-app:v1
+    image: mredw/item-app:v1
     # inisialisasi name cotainer ketika service berjalan
     container_name: item-app
     # expose port public ke 80 
