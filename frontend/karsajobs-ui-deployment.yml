@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: karsajobs-ui-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: karsajobs
+        image: mredw/kersajobs-ui:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8000
+        env:
+          - name: VUE_APP_BACKEND
+            value: "http://127.0.0.1:58421"
