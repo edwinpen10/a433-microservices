@@ -1,7 +1,7 @@
-FROM node:18-alpine
+FROM node:14.21-alpine as builder
 WORKDIR /app
 COPY package*.json ./
-RUN npm i
-COPY ./*.js ./
+RUN npm install
+COPY . .
 EXPOSE 3000
-CMD [ "node", "index.js" ]
+CMD [ "node", "index.js"]
