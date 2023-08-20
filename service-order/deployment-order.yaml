@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: order
+  template:
+    metadata:
+      labels:
+        app: order
+    spec:
+      containers:
+      - name: order
+        image: mredw/order-service:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        env:
+          - name: AMQP_URL
+            value: "amqp://rabbitmq-service.default.svc.cluster.local:5672"
