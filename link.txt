@@ -1,2 +1,4 @@
 Link dockerhub karsajobs: https://hub.docker.com/repository/docker/mredw/kersajobs
 Link dockerhub karsajobs-ui: https://hub.docker.com/repository/docker/mredw/kersajobs-ui
+Link dockerhub order-service: https://hub.docker.com/repository/docker/mredw/order-service
+Link dockerhub shipping-service: https://hub.docker.com/repository/docker/mredw/shipping-service
